@@ -1,3 +1,4 @@
+![CI](https://github.com/<your-username>/<repo-name>/actions/workflows/ci.yml/badge.svg)
 # DRDO Threat Alert API
 
 A lightweight Spring Boot service with a simple, powerful web UI for creating and managing security alerts (e.g., drone sightings, sensor issues). Ships with Docker and GitHub Actions CI.
