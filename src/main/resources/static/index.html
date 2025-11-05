@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DRDO Alerts Console</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="container">
+    <div class="title">
+      <h1>DRDO Alert System</h1>
+      <small class="subtitle">developed by Sarthak</small>
+    </div>
+    <div class="actions">
+      <div class="toolbar">
+        <div class="search">
+          <input id="searchInput" type="search" placeholder="Search description or location..." aria-label="Search alerts" />
+        </div>
+        <div class="chips" role="tablist" aria-label="Severity filter">
+          <button class="chip active" id="chipAll" data-sev="">
+            All <span class="count" id="countAll">0</span>
+          </button>
+          <button class="chip low" id="chipLow" data-sev="LOW">
+            Low <span class="count" id="countLow">0</span>
+          </button>
+          <button class="chip medium" id="chipMedium" data-sev="MEDIUM">
+            Medium <span class="count" id="countMedium">0</span>
+          </button>
+          <button class="chip high" id="chipHigh" data-sev="HIGH">
+            High <span class="count" id="countHigh">0</span>
+          </button>
+          <button class="chip critical" id="chipCritical" data-sev="CRITICAL">
+            Critical <span class="count" id="countCritical">0</span>
+          </button>
+        </div>
+      </div>
+      <div class="filter" hidden>
+        <label for="severityFilter">Filter</label>
+        <select id="severityFilter">
+          <option value="">All severities</option>
+          <option value="LOW">LOW</option>
+          <option value="MEDIUM">MEDIUM</option>
+          <option value="HIGH">HIGH</option>
+          <option value="CRITICAL">CRITICAL</option>
+        </select>
+      </div>
+      <button id="refreshBtn" class="btn">Refresh</button>
+    </div>
+  </header>
+
+  <main class="container grid">
+    <section>
+      <h2>Alerts</h2>
+      <div id="alertsList" class="list"></div>
+      <div id="emptyState" class="empty" hidden>No alerts yet.</div>
+    </section>
+
+    <section>
+      <h2>Create Alert</h2>
+      <form id="createForm" class="card">
+        <div class="field">
+          <label for="severity">Severity</label>
+          <select id="severity" required>
+            <option value="">Select severity</option>
+            <option value="LOW">LOW</option>
+            <option value="MEDIUM">MEDIUM</option>
+            <option value="HIGH">HIGH</option>
+            <option value="CRITICAL">CRITICAL</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="location">Location</label>
+          <input id="location" type="text" maxlength="255" required placeholder="e.g. Test Range Alpha" />
+        </div>
+        <div class="field">
+          <label for="description">Description</label>
+          <textarea id="description" maxlength="2000" required placeholder="Describe the alert..."></textarea>
+        </div>
+        <div class="row">
+          <button type="submit" class="btn primary">Create</button>
+          <span id="formMsg" class="msg" role="alert" aria-live="polite"></span>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="container muted">
+    <span id="status">Ready</span>
+  </footer>
+
+  <div id="toast" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

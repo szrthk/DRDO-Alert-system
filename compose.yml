@@ -1,0 +1,8 @@
+services:
+  api:
+    image: drdo/threat-api:latest
+    build: .
+    ports:
+      - "8081:8080"
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0"
